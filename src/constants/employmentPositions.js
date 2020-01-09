@@ -1,0 +1,23 @@
+export default [
+  { value: 'delA', label: 'Driver - Delivery (Class A)' },
+  { value: 'delB', label: 'Driver - Delivery (Class B)' },
+  { value: 'delC', label: 'Driver - Delivery (Class C)' },
+  { value: 'otrA', label: 'Driver - OTR (Class A)' },
+  { value: 'otrB', label: 'Driver - OTR (Class B)' },
+  { value: 'otrC', label: 'Driver - OTR (Class C)' },
+  { value: 'regA', label: 'Driver - Regional (Class A)' },
+  { value: 'regB', label: 'Driver - Regional (Class B)' },
+  { value: 'regC', label: 'Driver - Regional (Class C)' },
+  { value: 'ownOpA', label: 'Driver - Owner-Operator (Class A)' },
+  { value: 'ownOpB', label: 'Driver - Owner-Operator (Class B)' },
+  { value: 'ownOpC', label: 'Driver - Owner-Operator (Class C)' },
+  { value: 'drBus', label: 'Driver - Bus' },
+  { value: 'drOther', label: 'Driver - Other' },
+  { value: 'loOther', label: 'Logistics - Other' },
+  { value: 'trOther', label: 'Transportation - Other' },
+  { value: 'waOther', label: 'Warehouse - Other' },
+  { value: 'adOther', label: 'Administrative - Other' },
+  { value: 'instructor', label: 'Instructor' },
+  { value: 'hostler', label: 'Hostler' },
+  { value: 'other', label: 'Other - (not listed here)' }
+];
