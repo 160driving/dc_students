@@ -16,21 +16,24 @@ const INITIAL_STATE = {
   attendance: {},
   performance: {},
   categories: [],
-  loading: false,
+  loadingAttendanceInfo: false,
   loadingCategory: false
 };
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.GET_ATTENDANCE_INFO]: state => ({ ...state, loading: true }),
+  [Types.GET_ATTENDANCE_INFO]: state => ({
+    ...state,
+    loadingAttendanceInfo: true
+  }),
   [Types.ATTENDANCE_INFO_SUCCESS]: (state, { attendance, performance }) => ({
     ...state,
     attendance,
     performance,
-    loading: false
+    loadingAttendanceInfo: false
   }),
   [Types.ATTENDANCE_INFO_FAILED]: state => ({
     ...state,
-    loading: false
+    loadingAttendanceInfo: false
   }),
 
   [Types.GET_CATEGORY_INFO]: state => ({ ...state, loadingCategory: true }),

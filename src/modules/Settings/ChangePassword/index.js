@@ -4,7 +4,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { connect } from 'react-redux';
 
 import AuthActions from '_store/models/auth';
-import { Header, Text, Input, GradientButton, GradientView } from '_components';
+import { Header, Text, Input, GradientButton } from '_components';
 import {
   PasswordUnVisible,
   PasswordVisible,
@@ -152,6 +152,9 @@ class ChangePassword extends Component {
       newPasswordAgain,
       newPasswordAgainVisible
     } = this.state;
+
+    const { loading } = this.props;
+
     return (
       <Fragment>
         <Header
@@ -209,7 +212,7 @@ class ChangePassword extends Component {
 
           <View style={applyButtonContainer}>
             <GradientButton
-              loading={false}
+              loading={loading}
               colors={GRADIENT_BLUE}
               disabled={!this.applyBtnEnabled()}
               style={[
@@ -229,7 +232,8 @@ class ChangePassword extends Component {
   }
 }
 
-export default connect(
-  null,
-  AuthActions
-)(ChangePassword);
+function mapStateToProps({ auth }) {
+  return { loading: auth.loadingChangePassword };
+}
+
+export default connect(mapStateToProps, AuthActions)(ChangePassword);

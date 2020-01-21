@@ -43,16 +43,18 @@ class JobOffer extends Component {
 
   render() {
     const { navigation, acceptJobOffer, declineJobOffer } = this.props;
-    const { goBack, state } = navigation;
+    const { goBack } = navigation;
     const { onDecline } = navigation.state.params;
 
     const {
-      id,
-      companyName,
-      message,
-      logo,
-      title = 'Over-the-Road (OTR) Truck Driver'
-    } = state.params;
+      jobOffer: {
+        id,
+        companyName,
+        message,
+        logo,
+        title = 'Over-the-Road (OTR) Truck Driver'
+      } = {}
+    } = navigation.state.params;
 
     const specs = this.getSpecs();
 
@@ -107,10 +109,4 @@ function mapStateToProps({ jobs }) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  (function extractJobActions() {
-    const { acceptJobOffer, declineJobOffer } = JobsActions;
-    return { acceptJobOffer, declineJobOffer };
-  })()
-)(JobOffer);
+export default connect(mapStateToProps, JobsActions)(JobOffer);

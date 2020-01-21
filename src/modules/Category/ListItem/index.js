@@ -8,7 +8,7 @@ import {
   UNSUCCESSFUL,
   NEEDS_IMPROVEMENT,
   SATISFACTORY,
-  PROFICIENT,
+  PROFICIENT
 } from '_constants/colors';
 
 import {
@@ -16,7 +16,7 @@ import {
   containerShadow,
   innerContainer,
   titleStyle,
-  performanceRateStyle,
+  performanceRateStyle
 } from './styles';
 
 const generateColorFromResult = performance => {
@@ -39,7 +39,7 @@ getPerformanceStatus = performance => {
     0: 'Unsuccessful',
     1: 'Needs improvement',
     2: 'Satisfactory',
-    3: 'Proficient',
+    3: 'Proficient'
   };
   const performanceStatus = performanceMapping[performance];
 
@@ -51,7 +51,7 @@ getPerformanceKey = performance => {
     0: 'UNSUCCESFUL',
     1: 'NEEDS IMPROVEMENT',
     2: 'SATISFACTORY',
-    3: 'PROFICIENT',
+    3: 'PROFICIENT'
   };
 
   return performanceMapping[performance];
@@ -59,10 +59,12 @@ getPerformanceKey = performance => {
 
 const ListItem = ({ index, performance, title, id, onItemPressed }) => {
   return (
-    <TouchableOpacity style={container} onPress={() => onItemPressed(id)}>
-      <BoxShadow setting={containerShadow}>
+    <BoxShadow setting={containerShadow}>
+      <TouchableOpacity style={container} onPress={() => onItemPressed(id)}>
         <View style={{ flex: 1 }}>
           <PreTripLeft
+            width={145}
+            height={145}
             style={index % 2 === 0 && { transform: [{ rotateY: '180deg' }] }}
           />
           <View style={innerContainer}>
@@ -75,14 +77,14 @@ const ListItem = ({ index, performance, title, id, onItemPressed }) => {
             <Text
               style={[
                 performanceRateStyle,
-                { color: generateColorFromResult(performance) },
+                { color: generateColorFromResult(performance) }
               ]}>
               {getPerformanceStatus(performance)}
             </Text>
           </View>
         </View>
-      </BoxShadow>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </BoxShadow>
   );
 };
 

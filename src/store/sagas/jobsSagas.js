@@ -22,8 +22,6 @@ export function* getJobsStack() {
   const response = yield call(getJobsStackService);
   const { success, data } = response || {};
 
-  console.log('GET JOB STACK CALLED', response);
-
   if (success === 1) {
     yield put(JobsTypes.getJobsStackSuccess(data.stack.list));
   } else {
@@ -35,7 +33,6 @@ export function* applyForJob({ jobId, navigation }) {
   const memberId = yield select(state => state.auth.user.id);
   const firebaseId = yield call(Firebase.startChat, jobId, memberId);
   const response = yield call(applyJobService, jobId, firebaseId);
-  console.log('applyForJob: ', response);
   const { success } = response || {};
 
   if (success === 1) {
@@ -49,7 +46,6 @@ export function* applyForJob({ jobId, navigation }) {
 export function* discardJob({ jobId }) {
   const response = yield call(discardJobService, jobId);
   const { success } = response || {};
-  console.log('discardJob: ', response);
 
   if (success === 1) {
     yield put(JobsTypes.discardJobSuccess());
@@ -95,7 +91,6 @@ export function* getJobFilters({ onSuccess }) {
 export function* getJobApplications() {
   const response = yield call(getApplicationsService);
   const { success, data } = response || {};
-  console.log('getJobApplications: ', response);
   if (success === 1) {
     yield put(JobActions.getJobApplicationsSuccess(data.applications));
   } else {
@@ -138,7 +133,6 @@ export function* declineJobOffer({ offerId, navigation = null }) {
   const response = yield call(declineJobOfferService, offerId);
   const { success, data } = response || {};
   if (success === 1) {
-    console.log('SUCCESSFULLY DECLINED');
     yield put(JobActions.declineJobOfferSuccess());
     navigation && navigation.goBack();
     showMessage({

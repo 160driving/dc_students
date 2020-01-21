@@ -4,25 +4,30 @@ import { connect } from 'react-redux';
 
 import JobsActions from '_store/models/jobs';
 import { Header, Text, GradientButton, JobSpecs, Image } from '_components';
-import { E, H, L, M, N, N_R, P, S, T, V, X, Z } from '_assets/img';
+import { E, H, L, M, N, N_R, P, S, T, V, X, Z, K, O } from '_assets/img';
 import { GRADIENT_BLUE } from '_constants/colors';
 import styles from './styles';
 import { employmentTypes, jobTypes } from '../values';
 
 class JobDetails extends Component {
-  endResMapper = {
+  endorsementsMapper = {
     H,
+    S,
     N,
     P,
-    S,
     T,
-    X,
+    X
+  };
+
+  restrictionsMapper = {
     E,
     L,
     M,
-    N_R,
+    N: N_R,
     V,
-    Z
+    Z,
+    K,
+    O
   };
 
   componentDidUpdate(lastProps) {
@@ -72,12 +77,19 @@ class JobDetails extends Component {
     applyForJob(selectedJob.id);
   };
 
-  renderEndRes = endRes => (
+  renderEndRes = ({ values, mapper }) => (
     <View style={styles.lettersContainer}>
-      {endRes.map(
+      {values.map(
         (renderLetter = key => {
-          const Letter = this.endResMapper[key];
-          return <Letter key={key} style={{ marginRight: 9 }} />;
+          const Letter = mapper[key];
+          return (
+            <Letter
+              width={20}
+              height={20}
+              key={key}
+              style={{ marginRight: 9 }}
+            />
+          );
         })
       )}
     </View>
@@ -85,7 +97,6 @@ class JobDetails extends Component {
 
   render() {
     const { navigation, selectedJob, loadingApplyJob } = this.props;
-    console.log('selectedJob: ', selectedJob);
     const {
       logo = '',
       title = '',
@@ -103,7 +114,7 @@ class JobDetails extends Component {
     return (
       <Fragment>
         <Header
-          title="Over the Road (OTR) Truck Dr.."
+          title={title}
           goBack={true}
           onBackPressed={() => {
             navigation.goBack();
@@ -141,14 +152,20 @@ class JobDetails extends Component {
           {endorsements && (
             <React.Fragment>
               <Text style={styles.sectionTitle}>Endorsements</Text>
-              {this.renderEndRes(endorsements)}
+              {this.renderEndRes({
+                values: endorsements,
+                mapper: this.endorsementsMapper
+              })}
             </React.Fragment>
           )}
 
           {restriction && (
             <React.Fragment>
               <Text style={styles.sectionTitle}>Restrictions</Text>
-              {this.renderEndRes(restriction)}
+              {this.renderEndRes({
+                values: restriction,
+                mapper: this.restrictionsMapper
+              })}
             </React.Fragment>
           )}
 

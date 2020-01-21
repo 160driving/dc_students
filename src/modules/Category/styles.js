@@ -1,7 +1,14 @@
 const list = {
-  flex: 1,
   alignSelf: 'stretch',
+  width: '100%',
   paddingTop: 15
 };
 
-export { list };
+const listItem = {
+  height: 145,
+  width: 145,
+  marginHorizontal: 20,
+  marginVertical: 10
+};
+
+export { list, listItem };

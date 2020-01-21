@@ -8,12 +8,11 @@ import {
 const gradient = { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 };
 
 const rotatedView = {
+  top: 30,
   position: 'absolute',
-  top: 20,
-  left: -pw(250),
-  width: pw(872988),
-  height: ph(943.83),
-  elevation: 0
+  left: -pw(150.13),
+  width: pw(640),
+  height: ph(950.24)
 };
 
 const infoContainer = {

@@ -12,7 +12,7 @@ export const KEYS = {
 export const hasOpenedDashboardBefore = async () => {
   try {
     let hasCheckedDashboard = await AsyncStorage.getItem('dashboardOpened');
-    return !!hasCheckedDashboard;
+    return hasCheckedDashboard === 'yes';
   } catch (e) {
     return false;
   }

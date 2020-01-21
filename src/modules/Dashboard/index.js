@@ -3,9 +3,9 @@ import { ScrollView, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import { Header, Text, Gauge, GradientView } from '_components';
+import { Header, Text, Gauge, GradientView, Loader } from '_components';
 import { hasOpenedDashboardBefore } from '_helpers/storage';
-import { GetStartedCarousel } from './sections';
+// import { GetStartedCarousel } from './sections';
 import { SettingsIcon } from '_assets/img';
 import DashboardActions from '_store/models/dashboard';
 import {
@@ -36,26 +36,25 @@ import {
 
 class Dashboard extends Component {
   state = {
-    entries: ['0', '1', '2'],
-    activeSlide: 1,
+    // entries: ['0', '1', '2'],
+    // activeSlide: 1,
     openedBefore: false
   };
 
   componentDidMount() {
     const { getAttendanceInfo } = this.props;
-    AsyncStorage.setItem('dashboardOpened', 'yes');
     hasOpenedDashboardBefore().then(openedBefore => {
-      this.setState({ openedBefore });
+      console.log('openedBefore: ', openedBefore);
+      this.setState({ openedBefore: !!openedBefore });
     });
+    AsyncStorage.setItem('dashboardOpened', 'yes');
     getAttendanceInfo();
   }
 
-  goToJobs = async () => {
-    const { navigation } = this.props;
-    navigation.navigate('Jobs');
-  };
-
-  takePracticeTestPressed = () => {};
+  // goToJobs = async () => {
+  //   const { navigation } = this.props;
+  //   navigation.navigate('Jobs');
+  // };
 
   getPerformanceStatus = type => {
     const { performance } = this.props;
@@ -101,13 +100,14 @@ class Dashboard extends Component {
   };
 
   render() {
-    const { user, attendance, navigation } = this.props;
+    const { user, attendance, navigation, loadingAttendanceInfo } = this.props;
     const { openedBefore } = this.state;
     const { firstName } = user;
     const { navigate } = navigation;
 
     return (
       <Fragment>
+        <Loader loading={loadingAttendanceInfo} />
         <Header
           title={`Welcome ${openedBefore ? 'back' : ''}, ${firstName}`} //TODO: REMOVE BACK OR ADD BACK
           ActionIcon={SettingsIcon}
@@ -117,12 +117,12 @@ class Dashboard extends Component {
           style={{ flex: 1, alignSelf: 'stretch' }}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ alignItems: 'center', paddingBottom: 30 }}>
-          <GetStartedCarousel
+          {/* <GetStartedCarousel
             entries={this.state.entries}
             activeSlide={this.state.activeSlide}
             setActiveSlide={index => this.setState({ activeSlide: index })}
             goToJobs={this.goToJobs}
-          />
+          /> */}
 
           <Text style={totalHoursStyle}>
             {attendance.totalHoursTrained}/160 Hours

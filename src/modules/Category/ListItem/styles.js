@@ -5,22 +5,22 @@ const container = {
   height: 145,
   flex: 1,
   borderRadius: 27,
-  backgroundColor: 'white',
-  marginLeft: 20,
-  marginRight: 20,
-  marginTop: 10,
-  marginBottom: 10,
+  backgroundColor: 'white'
 };
 
 const containerShadow = {
   height: 145,
   width: 145,
   border: 10,
+  style: {
+    marginHorizontal: 20,
+    marginVertical: 10
+  },
   color: '#000',
   radius: 27,
   x: 0,
-  y: 1,
-  opacity: 0.06,
+  y: 0,
+  opacity: 0.06
 };
 
 const innerContainer = {
@@ -32,18 +32,18 @@ const innerContainer = {
   justifyContent: 'space-between',
   paddingTop: 15,
   paddingBottom: 15,
-  alignItems: 'center',
+  alignItems: 'center'
 };
 
 const titleStyle = {
   color: GREY_TEXT,
   fontSize: 18,
-  textAlign: 'center',
+  textAlign: 'center'
 };
 
 const performanceRateStyle = {
   fontSize: 14,
-  textAlign: 'center',
+  textAlign: 'center'
 };
 
 export {
@@ -51,5 +51,5 @@ export {
   containerShadow,
   innerContainer,
   titleStyle,
-  performanceRateStyle,
+  performanceRateStyle
 };

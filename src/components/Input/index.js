@@ -6,6 +6,8 @@ import {
   Text as Avenir
 } from 'react-native';
 
+import { GREY_TEXT } from '_constants/colors';
+
 import { Text } from '_components';
 
 import {
@@ -57,6 +59,7 @@ class Input extends Component {
             autoCapitalize="none"
             style={textStyle}
             placeholder={label ? null : placeholder}
+            placeholderTextColor={GREY_TEXT}
             secureTextEntry={secureTextEntry}
             keyboardType={keyboardType}
             value={value}

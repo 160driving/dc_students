@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, ScrollView, TouchableOpacity } from 'react-native';
 import DeckSwiper from 'react-native-deck-swiper';
 import { connect } from 'react-redux';
 

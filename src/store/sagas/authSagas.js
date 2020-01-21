@@ -17,6 +17,7 @@ export function* logIn({ email, password, navigation }) {
   OneSignal.setSubscription(true);
   const { userId } = yield new Promise(resolve => {
     OneSignal.getPermissionSubscriptionState(status => {
+      console.log('LOGIN STS SUCESS');
       resolve(status);
     });
   });
@@ -24,6 +25,7 @@ export function* logIn({ email, password, navigation }) {
   const response = yield call(logInService, email, password, userId);
 
   const { success, data } = response || {};
+  console.log('login saga response: ', response);
 
   if (success === 1) {
     const { member, accessToken, refreshToken } = data;
@@ -33,7 +35,7 @@ export function* logIn({ email, password, navigation }) {
     yield put(AuthActions.updateToken(accessToken));
     yield put(AuthActions.updateRefreshToken(refreshToken));
     storeUserData(member, accessToken, refreshToken);
-    navigation.navigate(active ? 'TabNav' : 'Profile');
+    navigation.navigate(active ? 'Home' : 'Profile');
   } else {
     yield put(AuthActions.logInFailed());
     OneSignal.setSubscription(false);
@@ -42,9 +44,11 @@ export function* logIn({ email, password, navigation }) {
 }
 
 export function* logInQr({ qr, navigation }) {
+  console.log('SAGA CALLED');
   OneSignal.setSubscription(true);
   const { userId } = yield new Promise(resolve => {
     OneSignal.getPermissionSubscriptionState(status => {
+      console.log('STATUS OK');
       resolve(status);
     });
   });
@@ -52,6 +56,7 @@ export function* logInQr({ qr, navigation }) {
   const { success, data } = response || {};
 
   if (success === 1) {
+    console.log('SUCCESS OJ');
     const { member, accessToken, refreshToken } = data;
     const { active } = member;
 
@@ -61,7 +66,7 @@ export function* logInQr({ qr, navigation }) {
     yield put(AuthActions.updateRefreshToken(refreshToken));
 
     storeUserData(member, accessToken, refreshToken);
-    navigation.navigate(active ? 'TabNav' : 'Profile');
+    navigation.navigate('Profile');
   } else {
     yield put(AuthActions.logInQrFailed());
     Alert.alert('Failed to login', 'Please check your credentials');
@@ -88,11 +93,9 @@ export function* changePassword({ oldPassword, newPassword }) {
 export function* updateProfile({ profileData, navigation }) {
   const response = yield call(updateProfileService, profileData);
   const { success, data } = response || {};
-  console.log('UPDATE PROFILE DATA: ', data);
 
   if (success === 1) {
     const { member } = data;
-    console.log('MEMBER UPDATE PROFLE: ', member);
 
     yield put(AuthActions.updateProfileSuccess());
     yield put(AuthActions.updateUser(member));

@@ -22,11 +22,7 @@ export const getLatestOfferService = (applicationId, company) =>
   base.get('get_latest_offer', { applicationId, company }).catch(err => {});
 
 export const acceptJobOfferService = (offerId, status = 'ACCEPTED') =>
-  base.patch(`accept_job_offer/${offerId}`, { status }).catch(err => {
-    console.log('acceptJobServiceErr: ', err.response);
-  });
+  base.patch(`accept_job_offer/${offerId}`, { status }).catch(err => {});
 
 export const declineJobOfferService = (offerId, status = 'REJECTED') =>
-  base.patch(`decline_job_offer/${offerId}`, { status }).catch(err => {
-    console.log('declineJobServiceErr: ', err.response);
-  });
+  base.patch(`decline_job_offer/${offerId}`, { status }).catch(err => {});

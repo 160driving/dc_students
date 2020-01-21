@@ -3,7 +3,7 @@ const win = Dimensions.get('window');
 
 import {
   proportionHeight as ph,
-  proportionWidth as pw,
+  proportionWidth as pw
 } from '_helpers/dimensions';
 
 const containerShadow = {
@@ -16,7 +16,7 @@ const containerShadow = {
   radius: 27,
   x: 0,
   y: 0,
-  opacity: 0.08,
+  opacity: 0.08
 };
 
 const container = {
@@ -25,7 +25,7 @@ const container = {
   width: win.width - pw(120),
   borderRadius: 27,
   flex: 1,
-  alignItems: 'center',
+  alignItems: 'center'
 };
 
 const imageContainer = {
@@ -33,7 +33,7 @@ const imageContainer = {
   alignSelf: 'stretch',
   borderTopLeftRadius: 27,
   borderTopRightRadius: 27,
-  backgroundColor: 'grey',
+  backgroundColor: 'grey'
 };
 
 const specsContainer = {
@@ -41,7 +41,7 @@ const specsContainer = {
   alignSelf: 'stretch',
   paddingLeft: 15,
   paddingRight: 15,
-  paddingBottom: 4,
+  paddingBottom: 4
 };
 
 const titleStyle = {
@@ -50,7 +50,7 @@ const titleStyle = {
   color: '#585858',
   fontSize: 15,
   marginTop: 20,
-  marginBottom: 20,
+  marginBottom: 20
 };
 
 const specsTextStyle = {
@@ -59,7 +59,7 @@ const specsTextStyle = {
   alignSelf: 'stretch',
   fontSize: 12,
   marginTop: 10,
-  marginBottom: 10,
+  marginBottom: 10
 };
 
 const bulletPoint = {
@@ -67,7 +67,7 @@ const bulletPoint = {
   width: 4,
   backgroundColor: '#585858',
   borderRadius: 2,
-  marginRight: 6,
+  marginRight: 6
 };
 
 export {
@@ -77,5 +77,5 @@ export {
   specsContainer,
   titleStyle,
   specsTextStyle,
-  bulletPoint,
+  bulletPoint
 };

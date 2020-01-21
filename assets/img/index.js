@@ -4,6 +4,7 @@ export { default as Logo160 } from './logo_dark.svg';
 export { default as ScanQrCode } from './scan_qr_code.svg';
 export { default as QrCodeScanned } from './qr_code_scanned.svg';
 export { default as LoginBackground } from './login_background.svg';
+export const loginBackground = require('./login_background.png');
 export { default as ProfileBackground } from './profile_background.svg';
 export const profile = require('./profile_img.png');
 export const closeIcon = require('./close-icon.png');
@@ -46,15 +47,20 @@ export { default as JobLogo } from './job-logo.svg';
 export { default as BigGreenTick } from './big_green_tick.svg';
 export { default as OpenedMessage } from './opened_message.svg';
 
-export { default as E } from './E.svg';
+//endorsements
 export { default as H } from './H.svg';
+export { default as S } from './S.svg';
+export { default as N } from './N.svg';
+export { default as P } from './P.svg';
+export { default as T } from './T.svg';
+export { default as X } from './X.svg';
+
+//restrictions
+export { default as E } from './E.svg';
 export { default as L } from './L.svg';
 export { default as M } from './M.svg';
 export { default as N_R } from './N-R.svg';
-export { default as N } from './N.svg';
-export { default as P } from './P.svg';
-export { default as S } from './S.svg';
-export { default as T } from './T.svg';
 export { default as V } from './V.svg';
-export { default as X } from './X.svg';
 export { default as Z } from './Z.svg';
+export { default as K } from './K.svg';
+export { default as O } from './O.svg';

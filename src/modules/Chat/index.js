@@ -10,6 +10,7 @@ import AndroidKeyboardAdjust from 'react-native-android-keyboard-adjust';
 import moment from 'moment';
 import { connect } from 'react-redux';
 
+import { resetInsideStack } from '_helpers';
 import ChatsActions from '_store/models/chats';
 import JobsActions from '_store/models/jobs';
 import { Header, Text } from '_components';
@@ -22,9 +23,22 @@ import * as styles from './styles';
 
 class Chat extends React.Component {
   state = {
-    messages: [],
+    messages: [
+      {
+        _id: 1,
+        text:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sollicitudin scelerisque maximus. Pellentesque ut dui non lectus cursus',
+        createdAt: new Date(),
+        user: {
+          _id: 2,
+          name: 'React Native',
+          avatar: 'https://placeimg.com/140/140/any'
+        }
+      }
+    ],
     disabled: false,
-    jobTitle: ''
+    jobTitle: '',
+    isNotification: false
   };
 
   componentDidMount() {
@@ -42,14 +56,10 @@ class Chat extends React.Component {
     if (firebaseId) {
       Firebase.getMessages(firebaseId, messages => {
         updateMessages(messages);
-        console.log('messages: ', messages);
-        if (Firebase.isMessageNotSeenMode(messages[0])) {
-          Firebase.updateSeenLastMessage(firebaseId);
-        }
       });
     }
     getLatestOffer(applicationId, true);
-    this.setState({ disabled: disabledChat, jobTitle });
+    this.setState({ disabled: disabledChat, jobTitle, isNotification });
 
     if (isNotification) {
       this.props.updateSelectedConversation(firebaseId);
@@ -68,10 +78,12 @@ class Chat extends React.Component {
   }
 
   onSend(messages = []) {
-    console.log('onSend: ', messages);
     const { navigation } = this.props;
     const { firebaseId } = navigation.state.params || {};
 
+    // this.setState(previousState => ({
+    //   messages: GiftedChat.append(previousState.messages, messages)
+    // }));
     const lastMessage = {
       createdAt: moment().unix() * 1000,
       seen: false,
@@ -156,13 +168,19 @@ class Chat extends React.Component {
 
     const { id } = jobOffer;
 
+    const { isNotification } = this.state;
+
     return (
       <React.Fragment>
         <Header
           title={this.state.jobTitle}
           goBack={true}
           onBackPressed={() => {
-            navigation.goBack();
+            if (isNotification) {
+              resetInsideStack(navigation, 'Inbox');
+            } else {
+              navigation.goBack();
+            }
           }}
           // ActionIcon={Information}
           // onActionIconPressed={this.goToJobOffer}

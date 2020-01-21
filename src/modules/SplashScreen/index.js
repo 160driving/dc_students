@@ -25,7 +25,7 @@ class SplashScreen extends Component {
 
     if (token) {
       const { active } = user;
-      navigation.navigate(active ? 'TabNav' : 'Profile');
+      navigation.navigate(active ? 'Home' : 'Profile');
     } else {
       navigation.navigate('LoginStack');
     }

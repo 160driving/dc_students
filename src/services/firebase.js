@@ -1,8 +1,6 @@
 import firebase from '@firebase/app';
 import '@firebase/firestore';
 
-import { ChatUserTypes } from '_constants/chats';
-
 class FireStore {
   constructor() {
     this.init();
@@ -49,7 +47,6 @@ class FireStore {
           messages.push({ ...doc.data(), id: doc.id });
         });
         onChange(messages);
-        console.log('messages: ', messages);
       });
   };
 
@@ -57,11 +54,6 @@ class FireStore {
     if (this.unsubscribeMessagesListener !== null) {
       this.unsubscribeMessagesListener();
     }
-  };
-
-  isMessageNotSeenMode = (message = {}) => {
-    const { seen, senderId } = message;
-    return senderId === ChatUserTypes.EMPLOYER && seen === false;
   };
 
   startChat = (jobId, memberId) => {
@@ -75,11 +67,9 @@ class FireStore {
           lastMessage: {}
         })
         .then(function(docRef) {
-          console.log('Document written with ID: ', docRef.id);
           resolve(docRef.id);
         })
         .catch(function(error) {
-          console.error('Error adding document: ', error);
           reject('Error adding document');
         });
     });
@@ -93,9 +83,7 @@ class FireStore {
       .update({
         'lastMessage.seen': true
       })
-      .then(function() {
-        console.log('lastMessage seen successfully updated!');
-      });
+      .then(function() {});
   };
 
   updateLastMessage = (docId, message) => {
@@ -106,9 +94,7 @@ class FireStore {
       .update({
         lastMessage: message
       })
-      .then(function() {
-        console.log('lastMessage seen successfully updated!');
-      });
+      .then(function() {});
   };
 
   sendMessage = (docId, message) => {
@@ -118,12 +104,8 @@ class FireStore {
       .doc(docId)
       .collection('messages')
       .add(message)
-      .then(function(docRef) {
-        console.log('Document written with ID: ', docRef.id);
-      })
-      .catch(function(error) {
-        console.error('Error adding document: ', error);
-      });
+      .then(function(docRef) {})
+      .catch(function(error) {});
   };
 }
 

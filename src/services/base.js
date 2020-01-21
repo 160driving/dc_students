@@ -3,8 +3,10 @@ import { objToSnakeCase, objToCamelCase } from 'utils';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import api from '_constants/api';
+import { error } from 'react-native-gifted-chat/lib/utils';
 
 const getRequest = async () => {
+  console.log('GEt reQUEST');
   const token = await AsyncStorage.getItem('token');
   let headers = {};
 
@@ -18,8 +20,8 @@ const getRequest = async () => {
   });
 
   request.interceptors.response.use(resp => {
+    console.log('respomse: ', resp);
     return new Promise(async (resolve, reject) => {
-      console.log('respomse: ', resp);
       const { code } = resp.data;
       const refreshToken = await AsyncStorage.getItem('refreshToken');
 
@@ -38,7 +40,10 @@ const getRequest = async () => {
 
             resolve(axios.request(resp.config));
           })
-          .catch(err => reject(err));
+          .catch(err => {
+            console.log('RESPOMSE ERROR:', error.response.data);
+            reject(err);
+          });
       }
 
       resolve(resp.data);

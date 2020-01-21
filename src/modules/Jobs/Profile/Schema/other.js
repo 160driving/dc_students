@@ -7,6 +7,6 @@ export default object({
   ),
   jobType: array().required('*Select at least one job type'),
   employmentType: array().required('*Select at least one employment form'),
-  minSalary: number().min(0.1, '*Please select a minimum salary'),
-  minPerMile: number().min(0.1, '*Please select a minimum per mile')
+  minSalary: number().nullable(),
+  minPerMile: number().nullable()
 });

@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import { Header, Loader } from '_components';
 import DashboardActions from '_store/models/dashboard';
 
 import ListItem from './ListItem';
-import { list } from './styles';
+import { list, listItem } from './styles';
 
 class Category extends Component {
   componentDidMount() {
@@ -24,6 +24,15 @@ class Category extends Component {
       navigation.navigate('CategoryDetail', { title: section.label });
     }
   };
+
+  mapListData(data) {
+    if (data.length % 2 === 0) {
+      return data;
+    } else {
+      const newData = [...data, { empty: true }];
+      return newData;
+    }
+  }
 
   getTitle = () => {
     const { type } = this.props.navigation.state.params;
@@ -44,25 +53,33 @@ class Category extends Component {
 
     return (
       <Fragment>
-        <Loader visible={false} />
-
+        <Loader loading={loadingCategory} />
         <Header title={title} goBack={true} onBackPressed={() => goBack()} />
 
-        {!loadingCategory && (
+        {categories.length != 0 && (
           <FlatList
             style={list}
             numColumns={2}
-            data={categories}
-            renderItem={({ item, index }) => (
-              <ListItem
-                key={item.id}
-                id={item.id}
-                onItemPressed={() => this.onItemPressed(item)}
-                index={index}
-                performance={item.performance}
-                title={item.label}
-              />
-            )}
+            data={this.mapListData(categories)}
+            contentContainerStyle={{
+              alignItems: 'center',
+              justifyContent: 'space-between'
+            }}
+            renderItem={({ item, index }) => {
+              if (item.empty) {
+                return <View key={index} style={listItem} />;
+              }
+              return (
+                <ListItem
+                  key={item.id}
+                  id={item.id}
+                  onItemPressed={() => this.onItemPressed(item)}
+                  index={index}
+                  performance={item.performance}
+                  title={item.label}
+                />
+              );
+            }}
           />
         )}
       </Fragment>
@@ -76,7 +93,4 @@ function mapStateToProps({ dashboard }) {
   return { categories, loadingCategory };
 }
 
-export default connect(
-  mapStateToProps,
-  DashboardActions
-)(Category);
+export default connect(mapStateToProps, DashboardActions)(Category);

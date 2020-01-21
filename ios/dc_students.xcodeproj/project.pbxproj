@@ -18,6 +18,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* dc_studentsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* dc_studentsTests.m */; };
 		3BAD17B436A6B7807B26D480 /* libPods-dc_students.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76B24697D44889BC57723FCF /* libPods-dc_students.a */; };
 		41E09FE1408D1935EDB717CB /* libPods-dc_students-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5594F70935AF1B843F0200E /* libPods-dc_students-tvOS.a */; };
+		8ED48ED546274C2593722603 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6FDD18EA3BE4FFF81AF210E /* Montserrat-Bold.ttf */; };
 		EDF672F09E8374D8CB480415 /* libPods-dc_students-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 250E669C705D6199AA89B3BA /* libPods-dc_students-tvOSTests.a */; };
 		FD453B133CE3318213B2BF8D /* libPods-dc_studentsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 852F444D79CC07F7DDAC11C6 /* libPods-dc_studentsTests.a */; };
 /* End PBXBuildFile section */
@@ -44,7 +45,7 @@
 		00E356EE1AD99517003FC87E /* dc_studentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dc_studentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* dc_studentsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dc_studentsTests.m; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* dc_students.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dc_students.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* 160 Students.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "160 Students.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = dc_students/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = dc_students/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -59,6 +60,7 @@
 		852F444D79CC07F7DDAC11C6 /* libPods-dc_studentsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-dc_studentsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A193DDA1FC7FAFF8F203692 /* Pods-dc_studentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dc_studentsTests.release.xcconfig"; path = "Target Support Files/Pods-dc_studentsTests/Pods-dc_studentsTests.release.xcconfig"; sourceTree = "<group>"; };
 		92AA03C616A9A800062AD9F2 /* Pods-dc_students-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dc_students-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-dc_students-tvOS/Pods-dc_students-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		C6FDD18EA3BE4FFF81AF210E /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Bold.ttf"; path = "../assets/fonts/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		C7E52F99E91A9094A801D648 /* Pods-dc_students-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dc_students-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-dc_students-tvOSTests/Pods-dc_students-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E24AB2CBCA86D18447B567BF /* Pods-dc_students-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dc_students-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-dc_students-tvOSTests/Pods-dc_students-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		E5594F70935AF1B843F0200E /* libPods-dc_students-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-dc_students-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,7 +150,6 @@
 				E57146AEE2506E3F0B21EDB8 /* Pods-dc_studentsTests.debug.xcconfig */,
 				8A193DDA1FC7FAFF8F203692 /* Pods-dc_studentsTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -181,6 +182,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				226674085F14A55287F99B1D /* Pods */,
+				F0F74FE8A5BE49A9B79E2C78 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -190,12 +192,20 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* dc_students.app */,
+				13B07F961A680F5B00A75B9A /* 160 Students.app */,
 				00E356EE1AD99517003FC87E /* dc_studentsTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* dc_students-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* dc_students-tvOSTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F0F74FE8A5BE49A9B79E2C78 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C6FDD18EA3BE4FFF81AF210E /* Montserrat-Bold.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,7 +247,7 @@
 			);
 			name = dc_students;
 			productName = dc_students;
-			productReference = 13B07F961A680F5B00A75B9A /* dc_students.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* 160 Students.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2D02E47A1E0B4A5D006451C7 /* dc_students-tvOS */ = {
@@ -285,12 +295,15 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 940;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = R3J7R4S3VA;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -308,6 +321,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -338,6 +352,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				8ED48ED546274C2593722603 /* Montserrat-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -626,17 +641,19 @@
 			baseConfigurationReference = E5D1378D828FFCBD1F17914D /* Pods-dc_students.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = R3J7R4S3VA;
 				INFOPLIST_FILE = dc_students/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = dc_students;
+				PRODUCT_BUNDLE_IDENTIFIER = com.160.students;
+				PRODUCT_NAME = "160 Students";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -646,16 +663,18 @@
 			baseConfigurationReference = 678F6F6C6235EA844FA1931A /* Pods-dc_students.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0.0;
+				DEVELOPMENT_TEAM = R3J7R4S3VA;
 				INFOPLIST_FILE = dc_students/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = dc_students;
+				PRODUCT_BUNDLE_IDENTIFIER = com.160.students;
+				PRODUCT_NAME = "160 Students";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

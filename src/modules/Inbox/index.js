@@ -7,6 +7,7 @@ import ChatsActions from '_store/models/chats';
 import { Header, EmptyScreen } from '_components';
 import { OpenedMessage } from '_assets/img';
 import { Card } from './sections';
+import { ChatUserTypes } from '_constants/chats';
 import Firebase from '_services/firebase';
 import { getChatList } from '_helpers/transform';
 
@@ -26,6 +27,27 @@ class Inbox extends Component {
     );
   }
 
+  componentDidUpdate() {
+    const { selectedConversation, chatList, user } = this.props;
+    if (selectedConversation) {
+      const chat = chatList.find(
+        item => item.firebaseId === selectedConversation
+      );
+      if (
+        chat &&
+        chat.lastMessage &&
+        this.isMessageNotSeenMode(chat.lastMessage)
+      ) {
+        Firebase.updateSeenLastMessage(selectedConversation);
+      }
+    }
+  }
+
+  isMessageNotSeenMode = (message = {}) => {
+    const { seen, senderId } = message;
+    return senderId === ChatUserTypes.EMPLOYER && seen === false;
+  };
+
   goToChat = (
     firebaseId,
     updateLastMessage,
@@ -42,7 +64,6 @@ class Inbox extends Component {
       applicationId,
       jobTitle
     });
-    console.log('updateLastMessage: ', updateLastMessage);
     if (updateLastMessage && firebaseId) {
       Firebase.updateSeenLastMessage(firebaseId);
     }
@@ -62,7 +83,7 @@ class Inbox extends Component {
               <Card
                 {...item}
                 goToChat={this.goToChat}
-                isMessageNotSeenMode={Firebase.isMessageNotSeenMode}
+                isMessageNotSeenMode={this.isMessageNotSeenMode}
               />
             )}
             contentContainerStyle={styles.listContainer}

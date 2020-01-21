@@ -16,14 +16,14 @@ class Settings extends Component {
       <View style={{ flex: 1, alignItems: 'center' }}>
         <Header title="Settings" goBack={true} onBackPressed={() => goBack()} />
         <SettingsIconBig style={settingsImg} />
-
+        {/* 
         <Button
           textStyle={{ ...buttonsTextStyle, marginTop: 50 }}
           text="Update Job Profile"
           onPress={() => {
             navigate('Registration', { goBack: true });
           }}
-        />
+        /> */}
 
         <Button
           textStyle={buttonsTextStyle}

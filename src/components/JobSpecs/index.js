@@ -4,6 +4,13 @@ import { Text as Avenir, View } from 'react-native';
 import { Text } from '_components';
 import styles from './styles';
 
+const benefitsMapper = {
+  retirement: 'Retirement Plan',
+  health: 'Health Coverage',
+  dental: 'Dental Coverage',
+  vision: 'Vision Coverage'
+};
+
 const JobSpecs = ({
   specs = [
     { title: 'Salary', value: '$80,000 / year' },
@@ -38,7 +45,9 @@ const JobSpecs = ({
               return (
                 <View key={index} style={styles.bulletPointContainer}>
                   <View style={styles.bulletPoint} />
-                  <Text style={styles.bulletedText}>{item}</Text>
+                  <Text style={styles.bulletedText}>
+                    {benefitsMapper[item]}
+                  </Text>
                 </View>
               );
             })}

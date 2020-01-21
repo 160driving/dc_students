@@ -44,7 +44,7 @@ class Profile extends Component {
     schemas[page]
       .validate(data, { abortEarly: false })
       .then(() => {
-        if (page === 3) {
+        if (page === 2) {
           const { retypePassword, ...dataToSend } = data;
           updateProfile(dataToSend, navigation);
         } else {
@@ -105,6 +105,7 @@ class Profile extends Component {
   render() {
     const { page } = this.state;
     const fields = getConfig(this.state)[page];
+    const { loadingProfileUpdate } = this.props;
 
     return (
       <Background
@@ -117,6 +118,7 @@ class Profile extends Component {
         <View style={nextButtonContainer}>
           <GradientButton
             style={nextButton}
+            loading={loadingProfileUpdate}
             text={page === 3 ? 'Submit' : 'Next'}
             onPress={this.goNext}
           />
@@ -127,7 +129,7 @@ class Profile extends Component {
 }
 
 function mapStateToProps({ auth }) {
-  return { user: auth.user };
+  return { user: auth.user, loadingProfileUpdate: auth.loadingProfileUpdate };
 }
 
 export default connect(mapStateToProps, AuthActions)(Profile);

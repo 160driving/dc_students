@@ -29,7 +29,7 @@ class QrCodeScanner extends Component {
   }
 
   scanningDone = qrCode => {
-    console.log('QR COBE: ', qrCode);
+    console.log('qrCode: ', qrCode);
     const { onScanSuccess = () => {} } = this.props;
 
     onScanSuccess(qrCode);

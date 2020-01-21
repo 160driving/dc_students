@@ -1,10 +1,9 @@
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 
 let _navigator;
 
 function setTopLevelNavigator(navigatorRef) {
   _navigator = navigatorRef;
-  console.log('_navigator:', _navigator);
 }
 
 function getRoute(route) {
@@ -16,18 +15,35 @@ function getRoute(route) {
   }
 }
 
+function resetRoute({ routeName, params }) {
+  _navigator.dispatch(
+    StackActions.reset({
+      index: 0,
+      actions: [NavigationActions.navigate({ routeName, params })]
+    })
+  );
+}
+
 function getCurrentRoute() {
   const route = _navigator.state.nav;
   return getRoute(route);
 }
 
-function navigate(routeName, params) {
+function navigate({ routeName, params }) {
   _navigator.dispatch(
     NavigationActions.navigate({
       routeName,
       params
     })
   );
+}
+
+function goBack(key = null) {
+  _navigator.dispatch(NavigationActions.back({ key }));
+}
+
+function setParams({ params, key }) {
+  _navigator.dispatch(NavigationActions.setParams({ params, key }));
 }
 
 function navigateInsideTabBar(tabBar, screen, params) {
@@ -56,5 +72,8 @@ export default {
   navigate,
   navigateInsideTabBar,
   getCurrentRoute,
-  navigateToChat
+  navigateToChat,
+  goBack,
+  setParams,
+  resetRoute
 };

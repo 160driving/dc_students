@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import { View, TouchableOpacity, Image } from 'react-native';
-import OneSignal from 'react-native-onesignal';
+import { View, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Modal from 'react-native-modal';
 import { connect } from 'react-redux';
 
@@ -18,7 +18,8 @@ import {
   Logo160,
   ScanQrCode,
   QrCodeScanned,
-  LoginBackground
+  LoginBackground,
+  loginBackground
 } from '_assets/img';
 import AuthActions from '_store/models/auth';
 import QrCodeScanner from './QrCodeScanner';
@@ -40,8 +41,8 @@ import {
 
 const credentials = __DEV__
   ? {
-      email: 'andi.ndrecka1@gmail.com',
-      password: 'Andindrecka1'
+      email: 'reldi@160drivingacademy.com',
+      password: 'test123'
     }
   : {
       email: '',
@@ -49,13 +50,6 @@ const credentials = __DEV__
     };
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-    OneSignal.getPermissionSubscriptionState(status => {
-      console.log('ONESIGNAL ID', status.userId);
-    });
-  }
-
   state = {
     ...credentials,
     scanned: false,
@@ -63,6 +57,7 @@ class Login extends Component {
   };
 
   onScanSuccess = qrCode => {
+    console.log('SCUCESS CALLED');
     const { navigation } = this.props;
     this.props.logInQr(qrCode, navigation);
     this.closeModal();
@@ -90,9 +85,14 @@ class Login extends Component {
           style={gradient}
         />
 
-        <LoginBackground style={rotatedView} />
+        <ImageBackground style={rotatedView} source={loginBackground}>
+          <View />
+        </ImageBackground>
+        {/* <LoginBackground style={rotatedView} /> */}
 
-        <View style={infoContainer}>
+        <KeyboardAwareScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={infoContainer}>
           <TouchableOpacity
             onPress={this.openModal}
             style={{ alignItems: 'center' }}>
@@ -150,7 +150,7 @@ class Login extends Component {
               }}
             /> */}
           </View>
-        </View>
+        </KeyboardAwareScrollView>
 
         <Modal isVisible={showModal} style={{ margin: 0 }}>
           <QrCodeScanner
